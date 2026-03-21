@@ -6,6 +6,7 @@
 CURRENTPATH=$(dirname "$0")
 FLATPAK=true
 LOGFILE="/tmp/config-debian.log"
+SOURCESFILE="/etc/apt/sources.list.d/debian.sources"
 
 # RECUP les infos sur la distribution pour vérification
 if [[ -e /etc/os-release ]]; then
@@ -215,12 +216,19 @@ fi
 ### CONFIG des dépôts
 echo -e "\033[1mConfiguration des dépôts\033[0m"
 
-## AJOUT dépôt Debian Backports
+## AJOUT dépôt Debian
 if ! check_apt_repo debian-backports.sources; then
 	echo -e -n " \xE2\x86\xB3 Ajout du dépôt DEB : Debian Backports "
-	echo -e 'Types: deb deb-src\nURIs: http://deb.debian.org/debian\nSuites: trixie-backports\nComponents: main\nArchitectures: amd64\nEnabled: yes\nSigned-by: /usr/share/keyrings/debian-archive-keyring.gpg' \
+	echo -e 'Types: deb deb-src\nURIs: http://deb.debian.org/debian\nSuites: trixie-backports\nComponents: main contrib non-free non-free-firmware\nArchitectures: amd64\nEnabled: yes\nSigned-by: /usr/share/keyrings/debian-archive-keyring.gpg' \
 	| sudo tee /etc/apt/sources.list.d/debian-backports.sources >> "$LOGFILE" 2>&1
 	check_cmd
+
+	# Ajout de contrib et non-free dans dépôt Debian
+	echo -e -n "  \xE2\x86\xB3 Ajout de contrib et non-free dans dépôt Debian "
+	cp $SOURCESFILE "${SOURCESFILE}.bak"
+	sed -i 's/\(main\)/\1 contrib non-free/g' $SOURCESFILE
+	check_cmd
+
 	echo -e -n "  \xE2\x86\xB3 Refresh du cache "
 	refresh_apt_cache
 	check_cmd
