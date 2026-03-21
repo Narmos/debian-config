@@ -1,0 +1,35 @@
+#add:packagename
+#del:packagename
+
+# CLI
+add:fastfetch
+add:git
+
+# GUI
+add:codium
+add:filezilla
+add:firefox
+add:firefox-l10n-fr
+add:vlc
+del:firefox-esr
+
+# GNOME
+#add:dconf-editor
+add:gnome-tweaks
+del:evolution
+del:gnome-music
+del:gnome-snapshot
+del:gnome-sound-recorder
+del:gnome-tour
+del:gnome-weather
+del:malcontent
+del:shotwell
+del:totem
+
+# Python
+add:python3-pip
+add:python3-tk
+add:python3-venv
+
+# Dépendance pour lancer les AppImages
+add:libfuse2t64
