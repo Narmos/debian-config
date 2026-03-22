@@ -29,6 +29,7 @@ del:totem
 # Extensions GNOME
 add:gnome-shell-extension-appindicator
 add:gnome-shell-extension-dashtodock
+del:gnome-shell-extension-prefs
 
 # Python
 add:python3-pip
