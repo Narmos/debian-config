@@ -4,12 +4,19 @@
 # CLI
 add:fastfetch
 add:git
+#add:lm-sensors
+add:p7zip-full
+add:wakeonlan
 
 # GUI
 add:codium
 add:filezilla
 add:firefox
 add:firefox-l10n-fr
+#add:geary
+#add:gparted
+#add:sqlitebrowser
+#add:virt-viewer
 add:vlc
 del:firefox-esr
 
