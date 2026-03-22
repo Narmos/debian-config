@@ -26,6 +26,10 @@ del:malcontent
 del:shotwell
 del:totem
 
+# Extensions GNOME
+add:gnome-shell-extension-appindicator
+add:gnome-shell-extension-dashtodock
+
 # Python
 add:python3-pip
 add:python3-tk
