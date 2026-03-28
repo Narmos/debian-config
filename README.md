@@ -41,13 +41,14 @@ Il est possible de faire uniquement une vérification des mises à jour (listing
 Le script lancé va effectuer les opérations suivantes :
 
 - Configurer le système APT
+    - Moderniser les sources
     - Mettre à jour les paquets DEB
-- Configurer le système Flatpak *(si activer)*
+- Configurer le système Flatpak *(si activé)*
     - Installer les paquets requis pour Flatpak
     - Mettre à jour les paquets Flatpak + *Proposition de redémarrage du système si nécessaire*
-- Ajouter les dépôts additionnels APT / Flatpak *(si activer)*
+- Ajouter les dépôts additionnels APT / Flatpak *(si activé)*
 - Ajouter ou Supprimer les paquets DEB paramétrés dans le fichier packages.list
-- Ajouter ou Supprimer les paquets Flatpak paramétrés dans le fichier flatpak.list *(si activer)*
+- Ajouter ou Supprimer les paquets Flatpak paramétrés dans le fichier flatpak.list *(si activé)*
 - Personnaliser la configuration du système + *Proposition de redémarrage du système si nécessaire*
 
 # Crédits
