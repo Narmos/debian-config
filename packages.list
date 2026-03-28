@@ -21,6 +21,7 @@ del:firefox-esr
 
 # GNOME
 #add:dconf-editor
+#add:gnome-podcats
 add:gnome-tweaks
 del:evolution
 del:gnome-music

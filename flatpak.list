@@ -7,7 +7,6 @@ add:com.vscodium.codium
 add:it.mijorus.gearlever
 #add:org.chromium.Chromium
 add:org.gimp.GIMP
-#add:org.gnome.Podcasts
 add:org.inkscape.Inkscape
 #add:org.jdownloader.JDownloader
 add:org.keepassxc.KeePassXC
