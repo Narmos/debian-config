@@ -247,20 +247,6 @@ if ! check_apt_repo mozilla.sources; then
 	check_cmd
 fi
 
-## AJOUT dépôt VSCodium
-if ! check_apt_repo vscodium.sources; then
-	echo -e -n " \xE2\x86\xB3 Ajout du dépôt DEB : VSCodium "
-	wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
-    | gpg --dearmor \
-    | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg >> "$LOGFILE" 2>&1
-	echo -e 'Types: deb\nURIs: https://download.vscodium.com/debs\nSuites: vscodium\nComponents: main\nArchitectures: amd64\nSigned-by: /usr/share/keyrings/vscodium-archive-keyring.gpg' \
-	| sudo tee /etc/apt/sources.list.d/vscodium.sources >> "$LOGFILE" 2>&1
-	check_cmd
-	echo -e -n "  \xE2\x86\xB3 Refresh du cache "
-	refresh_apt_cache
-	check_cmd
-fi
-
 ## AJOUT dépôt Flatpak Flathub
 if $FLATPAK; then
 	if [[ $(flatpak remotes | grep -c flathub) -ne 1 ]]; then

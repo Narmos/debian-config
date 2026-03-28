@@ -9,7 +9,6 @@ add:p7zip-full
 add:wakeonlan
 
 # GUI
-add:codium
 add:filezilla
 add:firefox
 add:firefox-l10n-fr
