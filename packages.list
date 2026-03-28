@@ -2,10 +2,10 @@
 #del:packagename
 
 # CLI
+add:7zip
 add:fastfetch
 add:git
 #add:lm-sensors
-add:p7zip-full
 add:wakeonlan
 
 # GUI
