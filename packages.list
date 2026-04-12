@@ -12,30 +12,34 @@ add:wakeonlan
 add:filezilla
 add:firefox
 add:firefox-l10n-fr
-#add:geary
-#add:gparted
+add:geary
+add:gparted
+add:ptyxis
 #add:sqlitebrowser
-#add:virt-viewer
+add:virt-viewer
 add:vlc
 del:firefox-esr
+del:malcontent
+del:shotwell
+del:showtime
+del:totem
 
 # GNOME
-#add:dconf-editor
-#add:gnome-podcats
+add:dconf-editor
+#add:gnome-podcasts
 add:gnome-tweaks
 del:evolution
 del:gnome-music
 del:gnome-snapshot
 del:gnome-sound-recorder
+del:gnome-terminal
 del:gnome-tour
 del:gnome-weather
-del:malcontent
-del:shotwell
-del:totem
 
 # Extensions GNOME
 add:gnome-shell-extension-appindicator
 add:gnome-shell-extension-dashtodock
+add:gnome-shell-extension-tiling-assistant
 del:gnome-shell-extension-prefs
 
 # Python
