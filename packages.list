@@ -6,6 +6,7 @@ add:7zip
 add:fastfetch
 add:git
 #add:lm-sensors
+add:podman
 add:wakeonlan
 
 # GUI
