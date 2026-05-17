@@ -10,6 +10,7 @@ add:podman
 add:wakeonlan
 
 # GUI
+add:deja-dup
 add:filezilla
 add:firefox
 add:firefox-l10n-fr
