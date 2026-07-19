@@ -10,7 +10,7 @@ add:podman
 add:wakeonlan
 
 # GUI
-add:deja-dup
+#add:deja-dup
 add:filezilla
 add:firefox
 add:firefox-l10n-fr
@@ -28,9 +28,9 @@ del:totem
 
 # GNOME
 add:dconf-editor
-#add:gnome-podcasts
 add:gnome-tweaks
 del:evolution
+del:gnome-maps
 del:gnome-music
 del:gnome-snapshot
 del:gnome-sound-recorder
