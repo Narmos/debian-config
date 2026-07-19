@@ -16,6 +16,7 @@ if [[ -e /etc/os-release ]]; then
 	echo "Distribution : ${PRETTY_NAME}"
 fi
 
+# RECUP la branche Debian installée
 if apt-cache policy | grep -q 'a=stable'; then
 	DEBIAN_RELEASE="stable"
 elif apt-cache policy | grep -q 'a=testing'; then
@@ -29,10 +30,8 @@ fi
 #################
 check_cmd() {
 	if [[ $? -eq 0 ]]; then
-		#echo -e "\033[32mOK\033[0m"
 		echo -e "\033[32m\xE2\x9C\x94\033[0m" # vu vert
 	else
-		#echo -e "\033[31mERREUR\033[0m"
 		echo -e "\033[31m\xE2\x9D\x8C\033[0m" # croix rouge
 	fi
 }
@@ -231,14 +230,14 @@ if ! check_apt_repo debian-backports.sources; then
 	cp $SOURCESFILE "${SOURCESFILE}.bak"
 	sed -i 's/\(main\)/\1 contrib non-free/g' $SOURCESFILE
 	check_cmd
-	
-	echo -e -n " \xE2\x86\xB3 Ajout du dépôt DEB : Debian Backports "
 
 	if [[ $DEBIAN_RELEASE == "stable" ]]; then
+		echo -e -n " \xE2\x86\xB3 Ajout du dépôt DEB : Debian Backports (activé) "
 		echo -e 'Types: deb deb-src\nURIs: http://deb.debian.org/debian\nSuites: trixie-backports\nComponents: main contrib non-free non-free-firmware\nArchitectures: amd64\nEnabled: yes\nSigned-by: /usr/share/keyrings/debian-archive-keyring.gpg' \
 		| sudo tee /etc/apt/sources.list.d/debian-backports.sources >> "$LOGFILE" 2>&1
 		check_cmd
 	else
+		echo -e -n " \xE2\x86\xB3 Ajout du dépôt DEB : Debian Backports (désactivé) "
 		echo -e 'Types: deb deb-src\nURIs: http://deb.debian.org/debian\nSuites: trixie-backports\nComponents: main contrib non-free non-free-firmware\nArchitectures: amd64\nEnabled: no\nSigned-by: /usr/share/keyrings/debian-archive-keyring.gpg' \
 		| sudo tee /etc/apt/sources.list.d/debian-backports.sources >> "$LOGFILE" 2>&1
 		check_cmd
@@ -333,7 +332,7 @@ echo -e "\033[1mConfiguration personnalisée du système\033[0m"
 ## Spécifique pour Lenovo ThinkPad X9-15 gen 1
 if [[ $(dmidecode -s system-version) == "ThinkPad X9-15 Gen 1" ]]; then
 	if ! check_apt_pkg "firmware-cirrus"; then
-		echo -e -n " \xE2\x86\xB3 Installation du paquet firmware-cirrus pour activer le son "
+		echo -e -n " \xE2\x86\xB3 Installation du paquet requis pour le son : firmware-cirrus "
 		add_apt_pkg "firmware-cirrus"
 		check_cmd
 	fi
