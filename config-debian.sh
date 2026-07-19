@@ -7,12 +7,26 @@ CURRENTPATH=$(dirname "$0")
 FLATPAK=true
 LOGFILE="/tmp/config-debian.log"
 SOURCESFILE="/etc/apt/sources.list.d/debian.sources"
+DEBIAN_RELEASE=""
 
 # RECUP les infos sur la distribution pour vérification
 if [[ -e /etc/os-release ]]; then
 	os_release="/etc/os-release"
 	. "${os_release}"
 	echo "Distribution : ${PRETTY_NAME}"
+fi
+
+if apt-cache policy | grep -q 'a=stable'; then
+	DEBIAN_RELEASE="stable"
+    echo " - Branche stable"
+elif apt-cache policy | grep -q 'a=testing'; then
+	DEBIAN_RELEASE="testing"
+    echo " - Branche testing"
+elif apt-cache policy | grep -q 'a=unstable'; then
+	DEBIAN_RELEASE="unstable"
+    echo " - Branche unstable (Sid)"
+else
+    echo " - Branche inconnue"
 fi
 
 #################
@@ -224,9 +238,16 @@ if ! check_apt_repo debian-backports.sources; then
 	check_cmd
 	
 	echo -e -n " \xE2\x86\xB3 Ajout du dépôt DEB : Debian Backports "
-	echo -e 'Types: deb deb-src\nURIs: http://deb.debian.org/debian\nSuites: trixie-backports\nComponents: main contrib non-free non-free-firmware\nArchitectures: amd64\nEnabled: yes\nSigned-by: /usr/share/keyrings/debian-archive-keyring.gpg' \
-	| sudo tee /etc/apt/sources.list.d/debian-backports.sources >> "$LOGFILE" 2>&1
-	check_cmd
+
+	if [[ $DEBIAN_RELEASE == "stable" ]]; then
+		echo -e 'Types: deb deb-src\nURIs: http://deb.debian.org/debian\nSuites: trixie-backports\nComponents: main contrib non-free non-free-firmware\nArchitectures: amd64\nEnabled: yes\nSigned-by: /usr/share/keyrings/debian-archive-keyring.gpg' \
+		| sudo tee /etc/apt/sources.list.d/debian-backports.sources >> "$LOGFILE" 2>&1
+		check_cmd
+	else
+		echo -e 'Types: deb deb-src\nURIs: http://deb.debian.org/debian\nSuites: trixie-backports\nComponents: main contrib non-free non-free-firmware\nArchitectures: amd64\nEnabled: no\nSigned-by: /usr/share/keyrings/debian-archive-keyring.gpg' \
+		| sudo tee /etc/apt/sources.list.d/debian-backports.sources >> "$LOGFILE" 2>&1
+		check_cmd
+	fi
 
 	echo -e -n "  \xE2\x86\xB3 Refresh du cache "
 	refresh_apt_cache
