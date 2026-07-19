@@ -2,7 +2,7 @@
 
 Ma configuration de Debian Stable. Configure & met à jour Debian.
 
-Versions testées : 13 (trixie)
+Versions testées : 13 (trixie) et testing (forky)
 
 **Ne fonctionne qu'avec Debian disposant de l'environnement de bureau GNOME.**
 
