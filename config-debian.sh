@@ -334,7 +334,14 @@ fi
 
 ### CONFIG système
 echo -e "\033[1mConfiguration personnalisée du système\033[0m"
-## Rien pour l'instant
+
+## Lenovo ThinkPad X9-15 gen 1
+if [[ dmidecode -s system-version == "ThinkPad X9-15 Gen 1" ]]; then
+	echo -e -n " \xE2\x86\xB3 Installation du paquet pour le son : firmware-cirrus "
+	add_apt_pkg "firmware-cirrus"
+	check_cmd
+fi
+
 echo
 
 ### VERIF si reboot nécessaire
