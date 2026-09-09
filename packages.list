@@ -5,19 +5,19 @@
 add:7zip
 add:fastfetch
 add:git
-#add:lm-sensors
+add:lm-sensors
 add:podman
+add:shellcheck
 add:wakeonlan
 
 # GUI
-#add:deja-dup
+add:deja-dup
 add:filezilla
 add:firefox
 add:firefox-l10n-fr
 add:geary
 add:gparted
 add:ptyxis
-#add:sqlitebrowser
 add:virt-viewer
 add:vlc
 del:firefox-esr
