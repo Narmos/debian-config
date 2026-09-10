@@ -11,6 +11,7 @@ add:shellcheck
 add:wakeonlan
 
 # GUI
+add:code
 add:deja-dup
 add:filezilla
 add:firefox
@@ -43,6 +44,10 @@ add:gnome-shell-extension-appindicator
 add:gnome-shell-extension-dashtodock
 add:gnome-shell-extension-tiling-assistant
 del:gnome-shell-extension-prefs
+
+# Yaru (Ubuntu theme)
+add:yaru-theme-gnome-shell
+add:yaru-theme-gtk
 
 # Python
 add:python3-pip

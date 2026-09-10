@@ -1,0 +1,4 @@
+# Priorise packages from the Mozilla repository over the Debian repositories
+Package: *
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
