@@ -29,6 +29,7 @@ del:totem
 
 # GNOME
 add:dconf-editor
+add:gnome-boxes
 add:gnome-tweaks
 del:evolution
 del:gnome-maps
